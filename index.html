@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title lang="en">maintenance</title>
+    <style>
+        body { text-align: center; padding: 150px; }
+        h1 { font-size: 50px; }
+        body { font: 20px Helvetica, sans-serif; color: #333; }
+        article { display: block; text-align: left; width: 650px; margin: 0 auto; }
+        a { color: #dc8100; text-decoration: none; }
+        a:hover { color: #333; text-decoration: none; }
+        body > article { display: none; }
+    </style>
+</head>
+<body>
+<noscript>
+    <article>
+        <h1>We&rsquo;ll be back soon!</h1>
+        <div>
+            <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. We&rsquo;ll be back online shortly!</p>
+            <p>&mdash; The Team</p>
+        </div>
+    </article>
+</noscript>
+<article lang="en">
+    <h1>We&rsquo;ll be back soon!</h1>
+    <div>
+        <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. We&rsquo;ll be back online shortly!</p>
+        <p>&mdash; The Team</p>
+    </div>
+</article>
+<article lang="ru">
+    <h1>Сайт скоро откроется!</h1>
+    <div>
+        <p>В настоящий момент на сайте проводятся работы по обслуживанию. Пожалуйста, зайдите через некоторое время. Приносим извинения за неудобства.</p>
+        <p>&mdash; Ваш <span id="site-name">сайт</span></p>
+    </div>
+</article>
+<script type="application/javascript">
+    (function ($, $$) {
+        var article = $('article:lang(' + (window.navigator.language || 'en') + ')') || $('article:lang(en)');
+        if (article) {
+            $$('span#site-name', article).forEach(function(span) {
+                span.innerHTML = window.location.hostname;
+            });
+            article.style.display = 'block';
+        }
+    })(document.querySelector.bind(document), function(selector, startNode) { return (startNode||document).querySelectorAll(selector); });
+</script>
+</body>
+</html>
